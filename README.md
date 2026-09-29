@@ -56,3 +56,19 @@ WHERE Country = 'USA'
 GROUP BY S.SpeciesName
 
 _Joins Employee, Species, and Zoo to count how many experts per species work specifically at US zoos. Shows a standard 3-table join with a geographic filter._
+
+------
+
+## Database Design: ACME Pizza (Crow's Foot ERD)
+
+Designed a 10-entity relational schema for a pizza ordering and delivery system, covering employee management, store operations, customer orders, and delivery tracking.
+
+![ACME Pizza ERD](acme_pizza_erd.png)
+
+Entities: JobClassification, Employee, Store, Customer, Order, OrderDetail, 
+Pizza, PizzaTopping, Topping, Delivery
+
+Key design decisions:
+- Two associative entities (OrderDetail, PizzaTopping) resolve many-to-many relationships between orders/pizzas and pizzas/toppings, each using composite primary keys
+- Circular relationship between Employee and Store models both "employed at" and "managed by" associations
+- Delivery tracks fulfillment separately from Order, linked by foreign key, to separate order placement from delivery execution
